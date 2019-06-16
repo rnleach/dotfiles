@@ -50,6 +50,29 @@ au CursorHold * checktime
 "to get colors working correctly.
 set t_Co=256
 
+" :h mode() to see all modes
+let g:currentmode={
+    \ 'n'      : 'N ',
+    \ 'no'     : 'N·Operator Pending ',
+    \ 'v'      : 'V ',
+    \ 'V'      : 'V·Line ',
+    \ '\<C-V>' : 'V·Block ',
+    \ 's'      : 'Select ',
+    \ 'S'      : 'S·Line ',
+    \ '\<C-S>' : 'S·Block ',
+    \ 'i'      : 'I ',
+    \ 'R'      : 'R ',
+    \ 'Rv'     : 'V·Replace ',
+    \ 'c'      : 'Command ',
+    \ 'cv'     : 'Vim Ex ',
+    \ 'ce'     : 'Ex ',
+    \ 'r'      : 'Prompt ',
+    \ 'rm'     : 'More ',
+    \ 'r?'     : 'Confirm ',
+    \ '!'      : 'Shell ',
+    \ 't'      : 'Terminal '
+    \}
+ 
 " Show the status line
 set laststatus=2
 
@@ -73,17 +96,14 @@ au InsertLeave * hi statusline guibg=DarkGreen ctermfg=DarkGreen guifg=White cte
 hi statusline guibg=DarkGrey ctermfg=DarkGreen guifg=White ctermbg=White
 
 " Formats the statusline
-set statusline=%F%m                             " file name and modified status
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, " file encoding
-set statusline+=%{&ff}]                         " file format
-set statusline+=%y                              " filetype
-set statusline+=%r                              " read only flag
+set statusline=%0*\ ►\ %{toupper(g:currentmode[mode()])}\ ◄ " Current mode
+set statusline+=\ %F%m                                      " file name and modified status
+set statusline+=\ [%{strlen(&fenc)?&fenc:'none'},           " file encoding
+set statusline+=%{&ff}]                                     " file format
+set statusline+=\ %y                                        " filetype
+set statusline+=\ %r                                        " read only flag
 
-set statusline+=\ %=                        " align right
-set statusline+=Line:%l/%L[%p%%]            " line X of Y [percent of file]
-set statusline+=\ Col:%c                    " current column
-set statusline+=\ Buf:%n                    " Buffer number
-set statusline+=\ [%b][0x%B]\               " ASCII and byte code under cursor
-
-
-
+set statusline+=\ %=                                        " align right
+set statusline+=Line:%l/%L[%p%%]                            " line X of Y [percent of file]
+set statusline+=\ Col:%c                                    " current column
+set statusline+=\ Buf:%n\                                   " Buffer number
