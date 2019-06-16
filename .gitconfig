@@ -1,0 +1,9 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Ryan
+	email = rnleach@users.noreply.github.com
+[core]
+	editor = vim
+[cola]
+	spellcheck = false

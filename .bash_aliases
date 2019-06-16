@@ -1,0 +1,1 @@
+alias start_snd='cd $HOME/programming/sounding && source ./env/bin/activate'
