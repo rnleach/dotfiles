@@ -46,6 +46,12 @@ set autoindent
 set smartindent
 set cindent
 
+"code folding
+set foldmethod=indent   
+set foldnestmax=1
+set nofoldenable
+set foldlevel=1
+
 "global clipboard for copy pasting between terminals
 set clipboard=unnamedplus
 
