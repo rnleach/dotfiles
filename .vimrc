@@ -23,6 +23,11 @@ set wildmenu
 " Create the tags file
 command! MakeTags !ctags -R .
 
+" Make the check and test commands
+command! Check !cargo check
+command! Test !cargo test
+command! Fmt !cargo fmt
+
 " NOW WE CAN:
 " - Use ^-] to jump to tag under cursor
 " - Use g^-] for ambiguous tags
@@ -46,9 +51,9 @@ set autoindent
 set smartindent
 set cindent
 
-"code folding
-set foldmethod=indent   
-set foldnestmax=1
+" Set up folding
+set foldmethod=indent
+set foldnestmax=2
 set nofoldenable
 set foldlevel=1
 
