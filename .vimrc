@@ -1,37 +1,66 @@
-" Basic Setup
-set nocompatible
+"
+" Package manager and packages
+"
 
-" esc in insert mode
-inoremap kj <esc>
+" enable minpac, if it is installed
+packadd minpac
+if exists('*minpac#init')
+	" minpac is available
+	call minpac#init()
 
-" esc in command mode
-cnoremap kj <C-C>
-" Note: In command mode mappings to esc run the command for some odd
-" historical vi compatibility reason. We use the alternate method of
-" existing which is Ctrl-C
+	call minpac#add('k-takata/minpac', {'type':'opt'})
+	call minpac#add('vim-airline/vim-airline')
+	call minpac#add('prabirshrestha/async.vim')
+	call minpac#add('prabirshrestha/asyncomplete.vim')
+	call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
+	call minpac#add('prabirshrestha/vim-lsp')
 
-" Enable syntax and plugins
-syntax enable
-filetype plugin on
+	if executable('rustc')
+		call minpac#add('rust-lang/rust.vim')
+	endif
 
-" Search down into sub folders with tab completion using find
-set path+=**
+	if executable('git')
+		call minpac#update()
+	endif
+endif
 
-"Display all matching file when we tab-complete
+"
+" Layout and display
+"
+
+" Configure air line. No impact if it's not installed
+let g:airline_powerline_fonts = 1
+let g:airline_theme='forest_dusk'
+
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+"Display all matching files when we tab-complete
 set wildmenu
-
-" Create the tags file
-command! MakeTags !ctags -R .
-
-" Make the check and test commands
-command! Check !cargo check
-command! Test !cargo test
-command! Fmt !cargo fmt
-
-" NOW WE CAN:
-" - Use ^-] to jump to tag under cursor
-" - Use g^-] for ambiguous tags
-" - Use ^-t jump back up the tag stack
 
 " Put a ruler at column 100
 set colorcolumn=100
@@ -39,8 +68,33 @@ set colorcolumn=100
 " set to abosulte numbering with relative numbers on top. CTRL-n toggles
 set number
 set relativenumber
-"CTRL-n to toggle numbers
-nnoremap <silent> <C-n> :set relativenumber!<cr>
+
+"
+" File system and general system
+"
+
+" Search down into sub folders with tab completion using find
+set path+=**
+
+"global clipboard for copy pasting between terminals
+set clipboard=unnamedplus
+
+"enable mouse support
+set mouse=a
+
+"check file change every 4 seconds ('CursorHold') and reload the buffer upon detecting change
+set autoread
+au CursorHold * checktime
+
+"to get colors working correctly.
+set t_Co=256
+
+
+"
+" Syntax, code formatting, and code folding
+"
+syntax enable
+filetype plugin indent on
 
 "convert tabs to 4 spaces
 set tabstop=4
@@ -57,73 +111,37 @@ set foldnestmax=2
 set nofoldenable
 set foldlevel=1
 
-"global clipboard for copy pasting between terminals
-set clipboard=unnamedplus
+"
+" My custom key mappings and commands
+"
 
-"enable mouse support
-set mouse=a
+let mapleader = " "
+nnoremap <Leader>j :cnext <CR>                   " Next item on quickfix list
+nnoremap <Leader>k :cprevious <CR>               " Previous item on quickfix list
+nnoremap <Leader>o :copen <CR>                   " Open the quickfix window
+nnoremap <Leader>c :cclose <CR>                  " Close the quickfix window
+nnoremap <silent> <C-n> :set relativenumber!<cr> " CTRL-n to toggle numbers
+inoremap kj <esc>                                " esc in insert mode
+cnoremap kj <C-C>                                " esc in command mode
 
-"check file change every 4 seconds ('CursorHold') and reload the buffer upon detecting change
-set autoread
-au CursorHold * checktime
+command! MakeTags !ctags -R .                    " Create the tags file
 
-"to get colors working correctly.
-set t_Co=256
+if executable('cargo')
+	" Set up for rust, if cargo is present
+	nnoremap <Leader>mc :make check <CR>
+	nnoremap <Leader>mt :make test <CR>
 
-" :h mode() to see all modes
-let g:currentmode={
-    \ 'n'      : 'Normal',
-    \ 'no'     : 'N·Operator Pending',
-    \ 'v'      : 'Visual',
-    \ 'V'      : 'V·Line',
-    \ '\<C-V>' : 'V·Block',
-    \ 's'      : 'Select',
-    \ 'S'      : 'S·Line',
-    \ '\<C-S>' : 'S·Block',
-    \ 'i'      : 'Insert',
-    \ 'R'      : 'Replace',
-    \ 'Rv'     : 'V·Replace',
-    \ 'c'      : 'Command',
-    \ 'cv'     : 'Vim Ex',
-    \ 'ce'     : 'Ex',
-    \ 'r'      : 'Prompt',
-    \ 'rm'     : 'More',
-    \ 'r?'     : 'Confirm',
-    \ '!'      : 'Shell',
-    \ 't'      : 'Terminal'
-    \}
- 
-" Show the status line
-set laststatus=2
+	command! Fmt !cargo fmt
+	command! Clean !cargo clean
+else
+	nnoremap <Leader>m :make <CR>
+endif
 
-" Set the color of the  status bar based on the mode.
-function! InsertStatuslineColor(mode)
-  if a:mode == 'i'
-    hi statusline guibg=Yellow ctermfg=Yellow guifg=Black ctermbg=Black
-  elseif a:mode == 'r'
-    hi statusline guibg=Red ctermfg=Red guifg=Black ctermbg=Black
-  else
-    hi statusline guibg=DarkRed ctermfg=DarkRed guifg=Black ctermbg=Black
-  endif
-endfunction
-
-" Call the function to set the statusbar color when changing modes.
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-" When leaving insert mode set the color of the status line for normal mode.
-au InsertLeave * hi statusline guibg=DarkGreen ctermfg=DarkGreen guifg=White ctermbg=White
-
-" default the statusline to green when entering Vim
-hi statusline guibg=DarkGrey ctermfg=DarkGreen guifg=White ctermbg=White
-
-" Formats the statusline
-set statusline=\ ►\ %{toupper(g:currentmode[mode()])}\ ◄ " Current mode
-set statusline+=\ %F%m                                      " file name and modified status
-set statusline+=\ [%{strlen(&fenc)?&fenc:'none'},           " file encoding
-set statusline+=%{&ff}]                                     " file format
-set statusline+=\ %y                                        " filetype
-set statusline+=\ %r                                        " read only flag
-
-set statusline+=\ %=                                        " align right
-set statusline+=Line:%l/%L[%p%%]                            " line X of Y [percent of file]
-set statusline+=\ Col:%c                                    " current column
-set statusline+=\ Buf:%n\                                   " Buffer number
+" Set up the rls
+if executable('rls')
+	au User lsp_setup call lsp#register_server({
+		\ 'name': 'rls',
+		\ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+		\ 'whitelist': ['rust'],
+		\ })
+endif

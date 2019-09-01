@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/ryan/programming/graphs/src'
+let g:netrw_dirhist_2='/home/ryan/programming/graphs/src/bin'
+let g:netrw_dirhist_3='/home/ryan/programming/sonde/src'
+let g:netrw_dirhist_4='/home/ryan/programming/graphs/src/plot'
+let g:netrw_dirhist_5='/home/ryan/programming/graphs/text'
+let g:netrw_dirhist_6='/home/ryan/Documents/Research/2017 Fire/Bufkit/figures'
+let g:netrw_dirhist_7='/home/ryan/programming/sounding-analysis/src/parcel_profile'
+let g:netrw_dirhist_8='/home/ryan/programming/sounding-bufkit/tests'
+let g:netrw_dirhist_9='/home/ryan/programming/sounding-analysis/src/parcel_profile'
