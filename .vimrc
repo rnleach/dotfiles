@@ -1,11 +1,11 @@
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme first!
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme forest-night
 
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Package manager and packages
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " enable minpac, if it is installed
 packadd minpac
@@ -30,12 +30,13 @@ if exists('*minpac#init')
 	endif
 endif
 
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Layout and display
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Configure air line. No impact if it's not installed
 let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -74,9 +75,9 @@ set colorcolumn=100
 set number
 set relativenumber
 
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File system and general system
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Search down into sub folders with tab completion using find
 set path+=**
@@ -95,9 +96,9 @@ au CursorHold * checktime
 set t_Co=256
 
 
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax, code formatting, and code folding
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 filetype plugin indent on
 
@@ -116,17 +117,29 @@ set foldnestmax=2
 set nofoldenable
 set foldlevel=1
 
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set up searching
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('rg')
+	" Use Ripgrep if possible, cause it's fast!
+	set grepprg=rg\ -H\ --no-heading\ --vimgrep
+	set grepformat=%f:%l:%c:%m
+elseif executable('git')
+	set grepprg=git\ grep\ -nI
+	set grepformat=%f:%l:%m
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My custom key mappings and commands
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader = " "
 nnoremap <Leader>j :cnext <CR>
 nnoremap <Leader>k :cprevious <CR>
 nnoremap <Leader>o :copen <CR>
 nnoremap <Leader>c :cclose <CR>
-nnoremap <silent> <C-n> :set relativenumber!<cr> 
-inoremap kj <esc>
+nnoremap <silent> <C-n> :set relativenumber!<cr>
+inoremap kj <Esc>
 cnoremap kj <C-C>
 
 command! MakeTags !ctags -R .                    " Create the tags file
@@ -142,7 +155,9 @@ else
 	nnoremap <Leader>m :make <CR>
 endif
 
-" Set up the rls
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set up LSP clients
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if executable('rls')
 	au User lsp_setup call lsp#register_server({
 		\ 'name': 'rls',
