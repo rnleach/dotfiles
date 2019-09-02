@@ -1,4 +1,9 @@
 "
+" Colorscheme first!
+"
+colorscheme forest-night
+
+"
 " Package manager and packages
 "
 
@@ -10,6 +15,7 @@ if exists('*minpac#init')
 
 	call minpac#add('k-takata/minpac', {'type':'opt'})
 	call minpac#add('vim-airline/vim-airline')
+	call minpac#add('vim-airline/vim-airline-themes')
 	call minpac#add('prabirshrestha/async.vim')
 	call minpac#add('prabirshrestha/asyncomplete.vim')
 	call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
@@ -30,7 +36,6 @@ endif
 
 " Configure air line. No impact if it's not installed
 let g:airline_powerline_fonts = 1
-let g:airline_theme='forest_dusk'
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -116,13 +121,13 @@ set foldlevel=1
 "
 
 let mapleader = " "
-nnoremap <Leader>j :cnext <CR>                   " Next item on quickfix list
-nnoremap <Leader>k :cprevious <CR>               " Previous item on quickfix list
-nnoremap <Leader>o :copen <CR>                   " Open the quickfix window
-nnoremap <Leader>c :cclose <CR>                  " Close the quickfix window
-nnoremap <silent> <C-n> :set relativenumber!<cr> " CTRL-n to toggle numbers
-inoremap kj <esc>                                " esc in insert mode
-cnoremap kj <C-C>                                " esc in command mode
+nnoremap <Leader>j :cnext <CR>
+nnoremap <Leader>k :cprevious <CR>
+nnoremap <Leader>o :copen <CR>
+nnoremap <Leader>c :cclose <CR>
+nnoremap <silent> <C-n> :set relativenumber!<cr> 
+inoremap kj <esc>
+cnoremap kj <C-C>
 
 command! MakeTags !ctags -R .                    " Create the tags file
 
