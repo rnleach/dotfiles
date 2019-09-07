@@ -142,7 +142,7 @@ nnoremap <silent> <C-n> :set relativenumber!<cr>
 inoremap kj <Esc>
 cnoremap kj <C-C>
 
-command! MakeTags !ctags -R .                    " Create the tags file
+command! MakeTags !ctags -R .
 
 if executable('cargo')
 	" Set up for rust, if cargo is present
