@@ -117,6 +117,11 @@ set foldnestmax=2
 set nofoldenable
 set foldlevel=1
 
+" A little something for terminal mode
+if has('nvim')
+	highlight! link TermCursor Cursor
+	highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set up searching
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -139,8 +144,21 @@ nnoremap <Leader>k :cprevious <CR>
 nnoremap <Leader>o :copen <CR>
 nnoremap <Leader>c :cclose <CR>
 nnoremap <silent> <C-n> :set relativenumber!<cr>
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
 inoremap kj <Esc>
 cnoremap kj <C-C>
+
+if has('nvim')
+	tnoremap kj <C-\><C-n>
+	tnoremap <M-h> <C-\><C-n><C-w>h
+	tnoremap <M-j> <C-\><C-n><C-w>j
+	tnoremap <M-k> <C-\><C-n><C-w>k
+	tnoremap <M-l> <C-\><C-n><C-w>l
+	tnoremap <C-v>kj kj
+endif
 
 command! MakeTags !ctags -R .
 
