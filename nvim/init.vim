@@ -20,6 +20,7 @@ if exists('*minpac#init')
 	call minpac#add('prabirshrestha/asyncomplete.vim')
 	call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
 	call minpac#add('prabirshrestha/vim-lsp')
+	call minpac#add('tpope/vim-fugitive')
 
 	if executable('rustc')
 		call minpac#add('rust-lang/rust.vim')
