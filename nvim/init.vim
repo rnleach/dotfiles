@@ -38,8 +38,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set guioptions-=e
 set sessionoptions+=tabpages,globals
-let g:taboo_tab_format=" %I%f%u%m "
-let g:taboo_renamed_tab_format=" %I[%l]%u%m "
+let g:taboo_tab_format="  %I[%f%m]%U  "
+let g:taboo_renamed_tab_format="  %I[%l%m]%U  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Layout and display
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
