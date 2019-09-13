@@ -21,6 +21,8 @@ if exists('*minpac#init')
 	call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
 	call minpac#add('prabirshrestha/vim-lsp')
 	call minpac#add('tpope/vim-fugitive')
+	call minpac#add('tpope/vim-obsession')
+	call minpac#add('gcmt/taboo.vim')
 
 	if executable('rustc')
 		call minpac#add('rust-lang/rust.vim')
@@ -31,6 +33,13 @@ if exists('*minpac#init')
 	endif
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Options for taboo plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set guioptions-=e
+set sessionoptions+=tabpages,globals
+let g:taboo_tab_format=" %I%f%u%m "
+let g:taboo_renamed_tab_format=" %I[%l]%u%m "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Layout and display
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
