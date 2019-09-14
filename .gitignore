@@ -1,0 +1,13 @@
+//
+// Editor specific
+//
+*.sublime*
+.vscode
+Session.vim
+*.swp
+tags
+
+//
+// OS specific
+//
+.DS_Store
