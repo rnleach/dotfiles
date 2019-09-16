@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termguicolors
 set background=dark
-colorscheme gruvbox-material
+colorscheme twilight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Package manager and packages
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -24,7 +24,6 @@ if exists('*minpac#init')
 	call minpac#add('tpope/vim-fugitive')
 	call minpac#add('tpope/vim-obsession')
 	call minpac#add('gcmt/taboo.vim')
-	call minpac#add('sainnhe/gruvbox-material')
 
 	if executable('rustc')
 		call minpac#add('rust-lang/rust.vim')
@@ -48,7 +47,7 @@ let g:taboo_renamed_tab_format="  %I[%l%m]%U  "
 
 " Configure air line. No impact if it's not installed
 let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox-material'
+let g:airline_theme='badcat'
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
