@@ -15,8 +15,7 @@ if exists('*minpac#init')
 	call minpac#init()
 
 	call minpac#add('k-takata/minpac', {'type':'opt'})
-	call minpac#add('vim-airline/vim-airline')
-	call minpac#add('vim-airline/vim-airline-themes')
+	call minpac#add('itchyny/lightline.vim')
 	call minpac#add('prabirshrestha/async.vim')
 	call minpac#add('prabirshrestha/asyncomplete.vim')
 	call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
@@ -29,9 +28,7 @@ if exists('*minpac#init')
 		call minpac#add('rust-lang/rust.vim')
 	endif
 
-	if executable('git')
-		call minpac#update()
-	endif
+	call minpac#update()
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -45,37 +42,6 @@ let g:taboo_renamed_tab_format="  %I[%l%m]%U  "
 " Layout and display
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Configure air line. No impact if it's not installed
-let g:airline_powerline_fonts = 1
-let g:airline_theme='badcat'
-
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
 "Display all matching files when we tab-complete
 set wildmenu
 
@@ -85,6 +51,21 @@ set colorcolumn=100
 " set to abosulte numbering with relative numbers on top. CTRL-n toggles
 set number
 set relativenumber
+
+" Get rid of -- INSERT --
+set noshowmode
+
+" Configure lightline
+let g:lightline = {
+		\ 'colorscheme': 'one',
+		\ 'active': {
+		\	'left': [ [ 'mode', 'paste'],
+		\	          ['gitbranch', 'readonly', 'filename', 'modified' ]]
+		\ },
+		\ 'component_function' : {
+		\	'gitbranch':'fugitive#head'
+		\ },
+		\ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File system and general system
@@ -104,7 +85,9 @@ set autoread
 au CursorHold * checktime
 
 "to get colors working correctly.
-set t_Co=256
+if !has('gui_running')
+	set t_Co=256
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
