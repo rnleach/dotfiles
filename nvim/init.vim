@@ -107,7 +107,7 @@ set cindent
 
 " Set up folding
 set foldmethod=indent
-set foldnestmax=2
+set foldnestmax=20
 set nofoldenable
 set foldlevel=1
 
