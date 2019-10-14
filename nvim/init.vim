@@ -48,6 +48,12 @@ set wildmenu
 " Put a ruler at column 100
 set colorcolumn=100
 
+" Always show the sign column
+set signcolumn=yes
+
+" Show the status line
+set laststatus=2
+
 " set to abosulte numbering with relative numbers on top. CTRL-n toggles
 set number
 set relativenumber
