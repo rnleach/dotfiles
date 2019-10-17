@@ -169,9 +169,9 @@ if executable('cargo')
 
 	command! Fmt !cargo fmt
 	command! Clean !cargo clean
-else
-	nnoremap <Leader>m :make <CR>
 endif
+
+nnoremap <Leader>m :make <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set up LSP clients
