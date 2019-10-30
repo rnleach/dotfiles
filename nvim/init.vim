@@ -103,7 +103,7 @@ syntax enable
 filetype plugin indent on
 
 "convert tabs to 4 spaces
-set tabstop=4
+set tabstop=4 expandtab
 "shift/indent also to 4 spaces
 set shiftwidth=4
 "auto indent (pressing enter, will indent)
@@ -174,7 +174,7 @@ endif
 nnoremap <Leader>m :make <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set up LSP clients
+" Set up LSP clients and special file handling on a per language basis.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if executable('rls')
 	au User lsp_setup call lsp#register_server({
@@ -191,4 +191,9 @@ if executable('pyls')
 		\ 'whitelist': ['python'],
 		\})
 endif
+
+augroup project
+  autocmd!
+  autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+augroup END
 
