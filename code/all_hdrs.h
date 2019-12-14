@@ -9,3 +9,5 @@
 
 #include <csv.h>
 #include <curl/curl.h>
+#include <sqlite3.h>
+
