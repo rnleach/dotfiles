@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <assert.h>
 #include <getopt.h>
 #include <limits.h>

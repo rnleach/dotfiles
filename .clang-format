@@ -1,8 +1,10 @@
 ---
-Language:        Cpp
-BasedOnStyle:  LLVM
-ColumnLimit:     100
-IndentWidth:     4
-TabWidth:        4
+Language:                   Cpp
+BasedOnStyle:               LLVM
+ColumnLimit:                100
+IndentWidth:                4
+TabWidth:                   4
+AlwaysBreakAfterReturnType: AllDefinitions
+BreakBeforeBraces:          Linux
 ...
 
