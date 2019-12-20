@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <ctype.h>
+#include <errno.h>
 #include <getopt.h>
 #include <limits.h>
 #include <math.h>
@@ -9,6 +10,9 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #include <csv.h>
 #include <curl/curl.h>
