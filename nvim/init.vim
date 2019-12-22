@@ -127,7 +127,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if executable('rg')
 	" Use Ripgrep if possible, cause it's fast!
-	set grepprg=rg\ -H\ --no-heading\ --vimgrep
+	set grepprg=rg\ -H\ --no-heading\ --vimgrep\ -g\ !tags\ -g\ !Session.vim
 	set grepformat=%f:%l:%c:%m
 elseif executable('git')
 	set grepprg=git\ grep\ -nI
