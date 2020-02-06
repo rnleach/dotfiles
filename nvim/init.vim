@@ -23,6 +23,7 @@ if exists('*minpac#init')
 	call minpac#add('tpope/vim-fugitive')
 	call minpac#add('tpope/vim-obsession')
 	call minpac#add('gcmt/taboo.vim')
+    call minpac#add('mechatroner/rainbow_csv')
 
 	if executable('rustc')
 		call minpac#add('rust-lang/rust.vim')

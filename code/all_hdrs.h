@@ -14,6 +14,8 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+#include <glib.h>
+
 #include <csv.h>
 #include <curl/curl.h>
 #include <sqlite3.h>
