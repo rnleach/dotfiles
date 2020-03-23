@@ -29,7 +29,7 @@ if exists('*minpac#init')
 		call minpac#add('rust-lang/rust.vim')
 	endif
 
-	call minpac#update()
+	" call minpac#update()
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
