@@ -47,7 +47,8 @@ let g:taboo_renamed_tab_format="  %I[%l%m]%U  "
 set wildmenu
 
 " Put a ruler at column 100
-set colorcolumn=100
+" Moved down to processing by file-type, augroup column_fmt
+"set colorcolumn=100
 
 " Always show the sign column
 set signcolumn=yes
@@ -192,6 +193,12 @@ if executable('pyls')
 		\ 'whitelist': ['python'],
 		\})
 endif
+
+augroup column_fmt
+    autocmd!
+    autocmd BufRead,BufNewFile,WinEnter,BufEnter * if &ft == "python" | set colorcolumn=73,80
+    autocmd BufRead,BufNewFile,WinEnter,BufEnter * if &ft != "python" | set colorcolumn=100
+augroup END
 
 augroup project
   autocmd!
