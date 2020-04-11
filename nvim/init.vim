@@ -48,7 +48,7 @@ set wildmenu
 
 " Put a ruler at column 100
 " Moved down to processing by file-type, augroup column_fmt
-"set colorcolumn=100
+set colorcolumn=100
 
 " Always show the sign column
 set signcolumn=yes
@@ -194,10 +194,12 @@ if executable('pyls')
 		\})
 endif
 
+let specialcols = ['python', 'gitcommit']
 augroup column_fmt
     autocmd!
-    autocmd BufRead,BufNewFile,WinEnter,BufEnter * if &ft == "python" | set colorcolumn=73,80
-    autocmd BufRead,BufNewFile,WinEnter,BufEnter * if &ft != "python" | set colorcolumn=100
+    autocmd BufNewFile,WinEnter,BufEnter,BufRead * if &ft == "python" | set colorcolumn=73,80 | endif
+    autocmd BufNewFile,WinEnter,BufEnter,BufRead * if &ft == "gitcommit" | set colorcolumn=52 | endif
+    autocmd BufNewFile,WinEnter,BufEnter,BufRead * if index(specialcols, &ft) < 0 | set colorcolumn=100 | endif
 augroup END
 
 augroup project
