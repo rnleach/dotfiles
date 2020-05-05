@@ -3,7 +3,23 @@
 # Please adapt and uncomment the following lines:
 	name = Ryan
 	email = rnleach@users.noreply.github.com
+
 [core]
-	editor = vim
+	editor = nvim
+
 [cola]
 	spellcheck = false
+
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[difftool "vimdiff"]
+    path = nvim
+[alias]
+    d = difftool
+
+[merge]
+    tool = vimdiff
+[mergetool "vimdiff"]
+    path = nvim
