@@ -164,11 +164,19 @@ if has('nvim')
 	tnoremap <C-v>kj kj
 endif
 
-command! MakeTags !ctags -R .
+if executable('ctags')
+    " Set up MakeTags
+    command! MakeTags !ctags -R .
+endif
+
+if executable('clang-format')
+    " Set up easy formatting for c code.
+    command! Cfmt %!clang-format --style=file --verbose
+endif
 
 if executable('cargo')
 	" Set up for rust, if cargo is present
-	nnoremap <Leader>mc :make check <CR>
+	nnoremap <Leader>mc :make check --tests <CR>
 	nnoremap <Leader>mt :make test <CR>
 
 	command! Fmt !cargo fmt
