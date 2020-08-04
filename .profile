@@ -41,9 +41,12 @@ if [ -d "$HOME/scripts" ] ; then
     PATH="$HOME/scripts:$PATH"
 fi
 
+export RUSTFLAGS="-C target-cpu=native"
 export PKG_CONFIG_PATH="$HOME/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
 export GNUPLOT_LIB="$HOME/gnuplot_lib"
 
-# Prompt
-PS1="⚡\[\033[01;32m\]\d \t\[\033[00m\] 🌲 \u@\h 🔥: "
+# Source the terminal layout.
+if [ -f "$HOME/.bash_terminal" ]; then
+    . "$HOME/.bash_terminal"
+fi
 
