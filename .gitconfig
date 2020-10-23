@@ -23,3 +23,5 @@
     tool = vimdiff
 [mergetool "vimdiff"]
     path = nvim
+[pull]
+	ff = only
