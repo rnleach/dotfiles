@@ -217,5 +217,18 @@ augroup transparent
     autocmd!
     autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
     autocmd vimenter * hi NonText guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Comment guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Constant guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Title guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Keyword guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Special guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Identifier guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi PreProc guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi String guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Statement guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Type guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Structure guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Function guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi Conditional guibg=NONE ctermbg=NONE
 augroup END
 
