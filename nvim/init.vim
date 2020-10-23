@@ -213,3 +213,9 @@ augroup project
   autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
 
+augroup transparent
+    autocmd!
+    autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+    autocmd vimenter * hi NonText guibg=NONE ctermbg=NONE
+augroup END
+
