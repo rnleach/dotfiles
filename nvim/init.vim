@@ -14,15 +14,18 @@ colorscheme twilight
 packadd minpac
 call minpac#init()
 call minpac#add('k-takata/minpac', {'type':'opt'})
+
 call minpac#add('itchyny/lightline.vim')
-call minpac#add('prabirshrestha/async.vim')
-call minpac#add('prabirshrestha/asyncomplete.vim')
-call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
-call minpac#add('prabirshrestha/vim-lsp')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-obsession')
 call minpac#add('gcmt/taboo.vim')
 call minpac#add('mechatroner/rainbow_csv')
+
+" These are all for auto-complete
+call minpac#add('prabirshrestha/async.vim')
+call minpac#add('prabirshrestha/asyncomplete.vim')
+call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
+call minpac#add('prabirshrestha/vim-lsp')
 
 if executable('rustc')
     call minpac#add('rust-lang/rust.vim')
