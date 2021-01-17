@@ -211,29 +211,33 @@ augroup column_fmt
 augroup END
 
 augroup project
-  autocmd!
-  autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+    autocmd!
+    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+    autocmd BufRead,BufNewFile *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+    autocmd BufRead,BufNewFile *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 augroup END
 
-augroup transparent
-    autocmd!
-    autocmd vimenter * hi Comment guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Conditional guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Constant guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Function guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Identifier guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Keyword guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi NonText guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Operator guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi PreProc guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Repeat guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Special guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Statement guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi String guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Structure guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Title guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Type guibg=NONE ctermbg=NONE
-    autocmd vimenter * hi Underlined guibg=NONE ctermbg=NONE
-augroup END
+if !has("gui_running")
+    augroup transparent
+        autocmd!
+        autocmd vimenter * hi Comment guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Conditional guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Constant guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Function guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Identifier guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Keyword guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi NonText guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Operator guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi PreProc guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Repeat guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Special guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Statement guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi String guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Structure guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Title guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Type guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Underlined guibg=NONE ctermbg=NONE
+    augroup END
+endif
 
