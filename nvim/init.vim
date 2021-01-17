@@ -200,10 +200,9 @@ if executable('pyls')
 		\})
 endif
 
-let specialcols = ['python', 'gitcommit']
+let specialcols = ['gitcommit']
 augroup column_fmt
     autocmd!
-    autocmd BufNewFile,WinEnter,BufEnter,BufRead * if &ft == "python" | set colorcolumn=73,80 | endif
     autocmd BufNewFile,WinEnter,BufEnter,BufRead * if &ft == "gitcommit" | set colorcolumn=52 | endif
     autocmd BufNewFile,WinEnter,BufEnter,BufRead * if index(specialcols, &ft) < 0 | set colorcolumn=100 | endif
 augroup END
