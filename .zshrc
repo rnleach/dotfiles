@@ -18,7 +18,7 @@ alias ll='exa -lh'
 alias cfmt='clang-format --style=file --verbose -i **/*.c **/*.h'
 
 # Set up the prompt
-PS1="%D %T 🌲 %F{220}%1~%f%b 🔥"
+PS1="%B⚡%D %T 🌲 %F{221}%1~%f%b 🔥"
 
 # Add git to the prompt
 autoload -Uz vcs_info
@@ -29,7 +29,10 @@ RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{220}(%b)%r%f'
 zstyle ':vcs_info:*' enable git
 
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# Add environment variablse
 export PATH="$HOME/scripts:$HOME/bin:$HOME/.cargo/bin:$PATH:."
 export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfg:$HOME/usr/lib/pkgconfig:$PKG_CONFIGPATH"
 export RUSTFLAGS="-C target-cpu=native"
