@@ -4,7 +4,7 @@ BasedOnStyle:               LLVM
 ColumnLimit:                100
 IndentWidth:                4
 TabWidth:                   4
-IndentPPDirectives: AfterHash
+IndentPPDirectives:         AfterHash
 AlwaysBreakAfterReturnType: AllDefinitions
 BreakBeforeBraces:          Linux
 ...
