@@ -17,17 +17,19 @@ alias ll='exa -lh'
 
 alias cfmt='clang-format --style=file --verbose -i **/*.c **/*.h'
 
-# Set up the prompt
-PS1="%B⚡%D %T 🌲 %F{221}%1~%f%b 🔥"
-
 # Add git to the prompt
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
-zstyle ':vcs_info:git:*' formats '%F{220}(%b)%r%f'
+zstyle ':vcs_info:git:*' formats '%F{220}(%b)%f'
 zstyle ':vcs_info:*' enable git
+
+# Set up the prompt
+PS1="%B %F{117}%m ⚡%W %T%f 🌲 %F{220}%1~%f%b 🔥"
+
+autoload -Uz compinit && compinit
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
