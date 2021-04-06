@@ -26,7 +26,7 @@ zstyle ':vcs_info:git:*' formats '%F{220}(%b)%f'
 zstyle ':vcs_info:*' enable git
 
 # Set up the prompt
-PS1="%B %F{117}%m ⚡%W %T%f 🌲 %F{220}%1~%f%b 🔥"
+PS1="%B %F{117}%m ⚡%W %T%f 🌲 %F{220}%1~%f%b 🔥 :"
 
 autoload -Uz compinit && compinit
 
@@ -46,6 +46,11 @@ if [ -d "$HOME/.cargo/bin" ] ; then
     PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+if [ -d "/c/Users/ryan/.cargo/bin" ] ; then
+    PATH="/c/Users/ryan/.cargo/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
