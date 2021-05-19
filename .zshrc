@@ -13,6 +13,7 @@ setopt HIST_REDUCE_BLANKS
 # Aliases
 alias ls='exa -h'
 alias ll='exa -lh'
+alias ssh='TERM=xterm-256color ssh'
 
 alias cfmt='clang-format --style=file --verbose -i **/*.c **/*.h'
 
