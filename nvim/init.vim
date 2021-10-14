@@ -213,7 +213,7 @@ augroup END
 augroup project
     autocmd!
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
-    autocmd BufRead,BufNewFile *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+    autocmd BufRead,BufNewFile *.py set makeprg=python3\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
     autocmd BufRead,BufNewFile *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 augroup END
 
@@ -221,6 +221,7 @@ if !has("gui_running")
     augroup transparent
         autocmd!
         autocmd vimenter * hi Comment guibg=NONE ctermbg=NONE
+        autocmd vimenter * hi Comment guifg=white ctermfg=white
         autocmd vimenter * hi Conditional guibg=NONE ctermbg=NONE
         autocmd vimenter * hi Constant guibg=NONE ctermbg=NONE
         autocmd vimenter * hi Function guibg=NONE ctermbg=NONE
