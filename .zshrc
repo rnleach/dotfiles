@@ -52,7 +52,6 @@ if [ -d "/c/Users/ryan/.cargo/bin" ] ; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-# set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
@@ -62,7 +61,7 @@ if [ -d "$HOME/usr/bin" ] ; then
     PATH="$HOME/usr/bin:$PATH"
 fi
 
-if [ -d "$HOME/bin:$PATH" ] ; then
+if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
@@ -80,3 +79,14 @@ if [ -d "$HOME/usr/lib/pkgconfig" ] ; then
     PKG_CONFIG_PATH="$HOME/usr/lib/pkgconfig:$PKG_CONFIGPATH"
 fi
 export PKG_CONFIG_PATH
+
+# Set up some directories for my satellite data.
+if [ -d "$HOME/wxdata" ] ; then
+    CLUSTER_DB="$HOME/wxdata/operational_findfire.sqlite"
+    export CLUSTER_DB
+fi
+
+if [ -d "/media/ryan/SAT/GOES" ] ; then
+    SAT_ARCHIVE="/media/ryan/SAT/GOES"
+    export SAT_ARCHIVE
+fi
