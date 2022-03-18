@@ -91,6 +91,9 @@ fi
 if [ -d "/media/ryan/SAT/GOES" ] ; then
     SAT_ARCHIVE="/media/ryan/SAT/GOES"
     export SAT_ARCHIVE
+elif [ -d "/Volumes/MET2/GOES" ] ; then
+    SAT_ARCHIVE="/Volumes/MET2/GOES"
+    export SAT_ARCHIVE
 elif [ -d "/home/ryan/wxdata/GOES" ] ; then
     SAT_ARCHIVE="/home/ryan/wxdata/GOES"
     export SAT_ARCHIVE
