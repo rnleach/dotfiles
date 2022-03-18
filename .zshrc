@@ -84,6 +84,8 @@ export PKG_CONFIG_PATH
 if [ -d "$HOME/wxdata" ] ; then
     CLUSTER_DB="$HOME/wxdata/operational_findfire.sqlite"
     export CLUSTER_DB
+    FIRES_DB="$HOME/wxdata/operational_connectfire.sqlite"
+    export FIRES_DB
 fi
 
 if [ -d "/media/ryan/SAT/GOES" ] ; then
