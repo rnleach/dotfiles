@@ -72,11 +72,11 @@ fi
 export PATH
 
 if [ -d "/usr/local/opt/sqlite/lib/pkgconfg" ] ; then
-    PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfg:$PKG_CONFIGPATH"
+    PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfg:$PKG_CONFIG_PATH"
 fi
 
 if [ -d "$HOME/usr/lib/pkgconfig" ] ; then
-    PKG_CONFIG_PATH="$HOME/usr/lib/pkgconfig:$PKG_CONFIGPATH"
+    PKG_CONFIG_PATH="$HOME/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
 fi
 export PKG_CONFIG_PATH
 
