@@ -26,6 +26,7 @@ call minpac#add('prabirshrestha/async.vim')
 call minpac#add('prabirshrestha/asyncomplete.vim')
 call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
 call minpac#add('prabirshrestha/vim-lsp')
+call minpac#add('eigenfoo/stan-vim')
 
 if executable('rustc')
     call minpac#add('rust-lang/rust.vim')
