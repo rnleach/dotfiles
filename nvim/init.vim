@@ -52,9 +52,9 @@ let g:taboo_renamed_tab_format="  %I[%l%m]%U  "
 "Display all matching files when we tab-complete
 set wildmenu
 
-" Put a ruler at column 100
+" Put a ruler at column 125
 " Moved down to processing by file-type, augroup column_fmt
-set colorcolumn=100
+set colorcolumn=125
 
 " Always show the sign column
 set signcolumn=yes
@@ -212,7 +212,7 @@ let specialcols = ['gitcommit']
 augroup column_fmt
     autocmd!
     autocmd BufNewFile,WinEnter,BufEnter,BufRead * if &ft == "gitcommit" | set colorcolumn=52 | endif
-    autocmd BufNewFile,WinEnter,BufEnter,BufRead * if index(specialcols, &ft) < 0 | set colorcolumn=100 | endif
+    autocmd BufNewFile,WinEnter,BufEnter,BufRead * if index(specialcols, &ft) < 0 | set colorcolumn=125 | endif
 augroup END
 
 augroup project
