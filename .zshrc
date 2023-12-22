@@ -11,8 +11,10 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_REDUCE_BLANKS
 
 # Aliases
-alias ls='exa -h'
-alias ll='exa -lh'
+if [ -x "$(command -v exa)" ]; then
+    alias ls='exa -h'
+    alias ll='exa -lh'
+fi
 alias ssh='TERM=xterm-256color ssh'
 
 alias cfmt='clang-format --style=file --verbose -i **/*.c **/*.h'
@@ -47,10 +49,6 @@ if [ -d "$HOME/.cargo/bin" ] ; then
     PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-if [ -d "/c/Users/ryan/.cargo/bin" ] ; then
-    PATH="/c/Users/ryan/.cargo/bin:$PATH"
-fi
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
@@ -69,6 +67,7 @@ fi
 if [ -d "$HOME/scripts" ] ; then
     PATH="$HOME/scripts:$PATH"
 fi
+
 export PATH
 
 if [ -d "/usr/local/opt/sqlite/lib/pkgconfg" ] ; then
@@ -78,6 +77,7 @@ fi
 if [ -d "$HOME/usr/lib/pkgconfig" ] ; then
     PKG_CONFIG_PATH="$HOME/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
 fi
+
 export PKG_CONFIG_PATH
 
 # Set up some directories for my satellite data.
