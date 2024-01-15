@@ -10,15 +10,6 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_REDUCE_BLANKS
 
-# Aliases
-if [ -x "$(command -v exa)" ]; then
-    alias ls='exa -h'
-    alias ll='exa -lh'
-fi
-alias ssh='TERM=xterm-256color ssh'
-
-alias cfmt='clang-format --style=file --verbose -i **/*.c **/*.h'
-
 # Add git to the prompt
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -98,3 +89,13 @@ elif [ -d "/home/ryan/wxdata/GOES" ] ; then
     SAT_ARCHIVE="/home/ryan/wxdata/GOES"
     export SAT_ARCHIVE
 fi
+
+# Aliases
+if [ -x "$(command -v exa)" ]; then
+    alias ls='exa -h'
+    alias ll='exa -lh'
+fi
+alias ssh='TERM=xterm-256color ssh'
+
+alias cfmt='clang-format --style=file --verbose -i **/*.c **/*.h'
+
