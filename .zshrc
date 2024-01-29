@@ -59,6 +59,9 @@ if [ -d "$HOME/scripts" ] ; then
     PATH="$HOME/scripts:$PATH"
 fi
 
+# add current directory to the path
+PATH = ".:$PATH"
+
 export PATH
 
 if [ -d "/usr/local/opt/sqlite/lib/pkgconfg" ] ; then
