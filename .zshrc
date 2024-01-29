@@ -60,7 +60,7 @@ if [ -d "$HOME/scripts" ] ; then
 fi
 
 # add current directory to the path
-PATH = ".:$PATH"
+PATH=".:$PATH"
 
 export PATH
 
