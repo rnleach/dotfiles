@@ -1,6 +1,7 @@
 set disassembly-flavor intel
 tui enable
 
+# Printing 128-bit SIMD variables.
 define p128c
     print /s *(char *)&$arg0@16
 end
@@ -29,6 +30,7 @@ define p128i64
     print /d *(int64_t *)&$arg0@2
 end
 
+# Printing 256-bit SIMD variables.
 define p256c
     print /s *(char *)&$arg0@32
 end
