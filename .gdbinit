@@ -1,3 +1,13 @@
+set history save on
+set history size 1000
+set history remove-duplicates 100
+
+set print pretty on
+
+set confirm off
+set verbose off
+set pagination off
+
 set disassembly-flavor intel
 tui enable
 
@@ -58,6 +68,4 @@ end
 define p256i64
     print /d *(int64_t *)&$arg0@4
 end
-
-start
 
