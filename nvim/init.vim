@@ -89,7 +89,7 @@ let g:lightline = {
 set path+=**
 
 "global clipboard for copy pasting between terminals
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 "enable mouse support
 set mouse=a
