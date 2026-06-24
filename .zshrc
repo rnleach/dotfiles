@@ -35,6 +35,11 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# set PATH so it includes user's scripts if it exists
+if [ -d "$HOME/scripts" ] ; then
+    PATH="$HOME/scripts:$PATH"
+fi
+
 # Add cargo to the path
 if [ -d "$HOME/.cargo/bin" ] ; then
     PATH="$HOME/.cargo/bin:$PATH"
@@ -50,13 +55,9 @@ if [ -d "$HOME/usr/bin" ] ; then
     PATH="$HOME/usr/bin:$PATH"
 fi
 
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's scripts if it exists
-if [ -d "$HOME/scripts" ] ; then
-    PATH="$HOME/scripts:$PATH"
+# set up for intel compiler if it exists
+if [ -d "/opt/intel/oneapi" ] ; then
+    source /opt/intel/oneapi/setvars.sh > /dev/null 2>&1
 fi
 
 # add current directory to the path
@@ -73,25 +74,6 @@ if [ -d "$HOME/usr/lib/pkgconfig" ] ; then
 fi
 
 export PKG_CONFIG_PATH
-
-# Set up some directories for my satellite data.
-if [ -d "$HOME/wxdata" ] ; then
-    CLUSTER_DB="$HOME/wxdata/operational_findfire.sqlite"
-    export CLUSTER_DB
-    FIRES_DB="$HOME/wxdata/operational_connectfire.sqlite"
-    export FIRES_DB
-fi
-
-if [ -d "/media/ryan/SAT/GOES" ] ; then
-    SAT_ARCHIVE="/media/ryan/SAT/GOES"
-    export SAT_ARCHIVE
-elif [ -d "/Volumes/MET2/GOES" ] ; then
-    SAT_ARCHIVE="/Volumes/MET2/GOES"
-    export SAT_ARCHIVE
-elif [ -d "/home/ryan/wxdata/GOES" ] ; then
-    SAT_ARCHIVE="/home/ryan/wxdata/GOES"
-    export SAT_ARCHIVE
-fi
 
 # Aliases
 if [ -x "$(command -v exa)" ]; then
